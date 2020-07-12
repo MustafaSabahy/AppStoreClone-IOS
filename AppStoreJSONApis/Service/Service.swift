@@ -1,16 +1,10 @@
-//
-//  Service.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/12/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
+
 
 import Foundation
 
 class Service {
     
-    static let shared = Service() // singleton
+    static let shared = Service()
     
     func fetchApps(searchTerm: String, completion: @escaping (SearchResult?, Error?) -> ()) {
         print("Fetching itunes apps from Service layer")
@@ -39,7 +33,6 @@ class Service {
         fetchGenericJSONData(urlString: urlString, completion: completion)
     }
     
-    // declare my generic json function here
     func fetchGenericJSONData<T: Decodable>(urlString: String, completion: @escaping (T?, Error?) -> ()) {
         
         guard let url = URL(string: urlString) else { return }
@@ -50,7 +43,6 @@ class Service {
             }
             do {
                 let objects = try JSONDecoder().decode(T.self, from: data!)
-                // success
                 completion(objects, nil)
             } catch {
                 completion(nil, error)
@@ -60,9 +52,6 @@ class Service {
     
 }
 
-// Stack
-
-// Generic is to declare the Type later on
 
 class Stack<T: Decodable> {
     var items = [T]()
@@ -73,7 +62,6 @@ class Stack<T: Decodable> {
 import UIKit
 
 func dummyFunc() {
-//    let stackOfImages = Stack<UIImage>()
     
     let stackOfStrings = Stack<String>()
     stackOfStrings.push(item: "HAS TO BE STRING")

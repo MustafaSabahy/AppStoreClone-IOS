@@ -1,10 +1,4 @@
-//
-//  MultipleAppCell.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 3/3/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
+
 
 import UIKit
 

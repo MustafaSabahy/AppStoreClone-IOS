@@ -1,10 +1,3 @@
-//
-//  TodayController.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/27/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
 
 import UIKit
 
@@ -118,14 +111,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         appFullscreenController.view.layer.cornerRadius = 16
         self.appFullscreenController = appFullscreenController
         
-        // #1 setup our pan gesture
         let gesture = UIPanGestureRecognizer(target: self, action: #selector(handleDrag))
         gesture.delegate = self
         appFullscreenController.view.addGestureRecognizer(gesture)
-        
-        // #2 add a blue effect view
-        
-        // #3 not to interfere with our UITableView scrolling
+
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -137,7 +126,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     @objc fileprivate func handleDrag(gesture: UIPanGestureRecognizer) {
         if gesture.state == .began {
             appFullscreenBeginOffset = appFullscreenController.tableView.contentOffset.y
-//            print(appFullscreenBeginOffset)
+
         }
         
         if appFullscreenController.tableView.contentOffset.y > 0 {
@@ -172,7 +161,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     fileprivate func setupStartingCellFrame(_ indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) else { return }
         
-        // absolute coordindates of cell
         guard let startingFrame = cell.superview?.convert(cell.frame, to: nil) else { return }
         
         self.startingFrame = startingFrame
@@ -190,8 +178,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         
         guard let startingFrame = self.startingFrame else { return }
         
-        // auto layout constraint animations
-        // 4 anchors
+     
         
         self.anchoredConstraints = fullscreenView.anchor(top: view.topAnchor, leading: view.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: startingFrame.origin.y, left: startingFrame.origin.x, bottom: 0, right: 0), size: .init(width: startingFrame.width, height: startingFrame.height))
         
@@ -210,8 +197,7 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.anchoredConstraints?.width?.constant = self.view.frame.width
             self.anchoredConstraints?.height?.constant = self.view.frame.height
             
-            self.view.layoutIfNeeded() // starts animation
-            
+            self.view.layoutIfNeeded()
             self.tabBarController?.tabBar.transform = CGAffineTransform(translationX: 0, y: 100)
             
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
@@ -224,13 +210,10 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
     }
     
     fileprivate func showSingleAppFullscreen(indexPath: IndexPath) {
-        // #1
         setupSingleAppFullscreenController(indexPath)
         
-        // #2 setup fullscreen in its starting position
         setupAppFullscreenStartingPosition(indexPath)
         
-        // #3 begin the fullscreen animation
         beginAnimationAppFullscreen()
     }
     
@@ -255,7 +238,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             self.tabBarController?.tabBar.transform = .identity
             
             guard let cell = self.appFullscreenController.tableView.cellForRow(at: [0, 0]) as? AppFullscreenHeaderCell else { return }
-//            cell.closeButton.alpha = 0
             self.appFullscreenController.closeButton.alpha = 0
             cell.todayCell.topConstraint.constant = 24
             cell.layoutIfNeeded()
@@ -287,7 +269,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
         
         let collectionView = gesture.view
         
-        // figure out which cell were clicking into
         
         var superview = collectionView?.superview
         
@@ -305,9 +286,6 @@ class TodayController: BaseListController, UICollectionViewDelegateFlowLayout, U
             
             superview = superview?.superview
         }
-        
-        //
-        
         
         
     }

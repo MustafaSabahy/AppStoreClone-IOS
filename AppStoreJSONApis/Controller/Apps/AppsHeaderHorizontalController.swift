@@ -1,10 +1,3 @@
-//
-//  AppsHeaderHorizontalController.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/15/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
 
 import UIKit
 
@@ -26,9 +19,7 @@ class AppsHeaderHorizontalController: HorizontalSnappingController, UICollection
         return .init(width: view.frame.width - 48, height: view.frame.height)
     }
     
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return .init(top: 0, left: 16, bottom: 0, right: 16)
-//    }
+
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return socialApps.count

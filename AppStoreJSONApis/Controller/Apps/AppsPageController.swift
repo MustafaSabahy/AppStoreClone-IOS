@@ -1,10 +1,4 @@
-//
-//  AppsController.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/14/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
+
 
 import UIKit
 
@@ -36,7 +30,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         fetchData()
     }
     
-//    var editorsChoiceGames: AppGroup?
     
     var socialApps = [SocialApp]()
     var groups = [AppGroup]()
@@ -47,7 +40,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         var group2: AppGroup?
         var group3: AppGroup?
         
-        // help you sync your data fetches together
         let dispatchGroup = DispatchGroup()
         
         dispatchGroup.enter()
@@ -70,13 +62,10 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         
         dispatchGroup.enter()
         Service.shared.fetchSocialApps { (apps, err) in
-            // you should check the err
             dispatchGroup.leave()
             self.socialApps = apps ?? []
-//            self.collectionView.reloadData()
         }
         
-        // completion
         dispatchGroup.notify(queue: .main) {
             self.activityIndicatorView.stopAnimating()
             
@@ -93,7 +82,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         }
     }
     
-    // 2
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerId, for: indexPath) as! AppsPageHeader
         header.appHeaderHorizontalController.socialApps = self.socialApps
@@ -101,7 +89,6 @@ class AppsPageController: BaseListController, UICollectionViewDelegateFlowLayout
         return header
     }
     
-    // 3
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return .init(width: view.frame.width, height: 300)
     }

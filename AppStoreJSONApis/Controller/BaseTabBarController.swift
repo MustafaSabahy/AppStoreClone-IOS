@@ -1,16 +1,9 @@
-//
-//  BaseTabBarController.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/8/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
+
 
 import UIKit
 
 class BaseTabBarController: UITabBarController {
     
-    // 3 - maybe introduce our AppsSearchController
     
     override func viewDidLoad() {
         super.viewDidLoad()

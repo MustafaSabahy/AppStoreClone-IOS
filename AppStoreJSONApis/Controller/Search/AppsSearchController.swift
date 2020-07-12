@@ -1,10 +1,3 @@
-//
-//  AppsSearchController.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/8/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
 
 import UIKit
 import SDWebImage
@@ -40,7 +33,6 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
         
         setupSearchBar()
         
-//        fetchITunesApps()
     }
     
     fileprivate func setupSearchBar() {
@@ -55,9 +47,7 @@ class AppsSearchController: BaseListController, UICollectionViewDelegateFlowLayo
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
-        
-        // introduce some delay before performing the search
-        // throttling the search
+     
         
         timer?.invalidate()
         

@@ -1,10 +1,4 @@
-//
-//  TodayCell.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 2/27/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
+
 
 import UIKit
 
@@ -35,7 +29,6 @@ class TodayCell: BaseTodayCell {
         super.init(frame: frame)
         
         backgroundColor = .white
-//        clipsToBounds = true
         layer.cornerRadius = 16
         
         imageView.contentMode = .scaleAspectFill
@@ -54,7 +47,6 @@ class TodayCell: BaseTodayCell {
         self.topConstraint = stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24)
         self.topConstraint.isActive = true
         
-//        stackView.fillSuperview(padding: .init(top: 24, left: 24, bottom: 24, right: 24))
         
     }
     

@@ -1,10 +1,3 @@
-//
-//  MusicLoadingFooter.swift
-//  AppStoreJSONApis
-//
-//  Created by Brian Voong on 3/15/19.
-//  Copyright © 2019 Brian Voong. All rights reserved.
-//
 
 import UIKit
 
